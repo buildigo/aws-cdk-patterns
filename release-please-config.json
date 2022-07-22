@@ -4,10 +4,11 @@
       "releaseType": "node",
       "draft": false,
       "prerelease": false,
+      "changelogPath": "CHANGELOG.md",
+      "//": "Remove this once we go stable 1.0 and more",
       "bumpMinorPreMajor": true,
       "bumpPatchForMinorPreMajor": true,
-      "changelogPath": "CHANGELOG.md",
-      "versioning": "default"
+      "versioning": "always-bump-patch"
     }
   }
 }
