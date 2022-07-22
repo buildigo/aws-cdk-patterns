@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.8](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.7...v0.0.8) (2022-07-22)
+
+
+### Bug Fixes
+
+* revert config change ([d6121bc](https://github.com/buildigo/aws-cdk-patterns/commit/d6121bc228c4729c43946f6927cee8b2ae2e5cb7))
+
 ## [0.0.7](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.6...v0.0.7) (2022-07-22)
 
 
