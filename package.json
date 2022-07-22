@@ -1,0 +1,40 @@
+{
+  "name": "@buildigo/aws-cdk-patterns",
+  "version": "0.1.0",
+  "description": "Set of AWS CDK high level patterns and utilities",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": ["lib/**/*"],
+  "prettier": "@buildigo/prettier-config",
+  "scripts": {
+    "prettier": "prettier \"**/*.+(js|ts|html|css|json)\"",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "lint": "eslint --ignore-path .gitignore --ext .ts .",
+    "lint-and-format": "concurrently \"npm:lint\" \"npm:check-format\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buildigo/aws-cdk-patterns.git"
+  },
+  "keywords": [],
+  "author": "Mathieu Meylan <mathieu.meylan@buildigo.ch>",
+  "license": "Apache version 2.0",
+  "bugs": {
+    "url": "https://github.com/buildigo/aws-cdk-patterns/issues"
+  },
+  "homepage": "https://github.com/buildigo/aws-cdk-patterns#readme",
+  "devDependencies": {
+    "@buildigo/eslint-config-typescript": "^1.12.5",
+    "@buildigo/prettier-config": "^1.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "concurrently": "^7.3.0",
+    "eslint": "^8.20.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  }
+}
