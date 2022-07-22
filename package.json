@@ -1,29 +1,17 @@
 {
   "name": "@buildigo/aws-cdk-patterns",
-  "version": "0.0.11",
+  "version": "0.0.14",
   "description": "Set of AWS CDK high level patterns and utilities",
-  "type": "module",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
-  "prettier": "@buildigo/prettier-config",
-  "scripts": {
-    "lint-staged": "lint-staged",
-    "prettier": "prettier \"**/*.+(js|ts|html|css|json)\"",
-    "format": "npm run prettier -- --write",
-    "check-format": "npm run prettier -- --list-different",
-    "lint": "eslint --ignore-path .gitignore --ext .ts .",
-    "lint-and-format": "concurrently \"npm:lint\" \"npm:check-format\"",
-    "test": "is-ci-cli \"test:ci\" \"test:dev\"",
-    "test:dev": "jest -c jest.config.js --watch",
-    "test:ci": "JEST_SILENT_REPORTER_DOTS=true jest -c jest.config.js --coverage --reporters=jest-silent-reporter --forceExit --detectOpenHandles --runInBand",
-    "test:coverage": "jest -c jest.config.js --coverage",
-    "prepublish": "npm run build",
-    "build": "tsc",
-    "prepare": "husky install"
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    "import": "./lib/esm/index.js",
+    "require": "./lib/cjs/index.js",
+    "default": "./lib/esm/index.js"
   },
+  "prettier": "@buildigo/prettier-config",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/buildigo/aws-cdk-patterns.git"
@@ -38,6 +26,23 @@
     "url": "https://github.com/buildigo/aws-cdk-patterns/issues"
   },
   "homepage": "https://github.com/buildigo/aws-cdk-patterns#readme",
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "prettier": "prettier \"**/*.+(js|ts|html|css|json)\"",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "lint": "eslint --ignore-path .gitignore --ext .ts .",
+    "lint-and-format": "concurrently \"npm:lint\" \"npm:check-format\"",
+    "test": "is-ci-cli \"test:ci\" \"test:dev\"",
+    "test:dev": "jest -c jest.config.js --watch",
+    "test:ci": "JEST_SILENT_REPORTER_DOTS=true jest -c jest.config.js --coverage --reporters=jest-silent-reporter --forceExit --detectOpenHandles --runInBand",
+    "test:coverage": "jest -c jest.config.js --coverage",
+    "prepublish": "npm run build",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "prepare": "husky install"
+  },
   "peerDependencies": {
     "aws-cdk-lib": "^2.0.0",
     "constructs": "^10.0.0"

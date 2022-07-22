@@ -1,16 +1,17 @@
-import {join, dirname} from 'path'
-import {fileURLToPath} from 'url'
+const path = require('path')
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-export default {
+module.exports = {
   displayName: 'aws-cdk-pattens',
-  roots: [join(__dirname, 'src')],
+  roots: [path.join(__dirname, 'src')],
   testMatch: ['<rootDir>/**/*.(test).ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
     '^.+\\.ts': 'ts-jest',
+  },
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.cjs.json',
+    },
   },
   watchPlugins: ['jest-watch-select-projects'],
   collectCoverageFrom: ['src/**/*.ts'],
