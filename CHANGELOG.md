@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.9...v0.0.10) (2022-07-22)
+
+
+### Bug Fixes
+
+* target module esnext with module interop ([33fb170](https://github.com/buildigo/aws-cdk-patterns/commit/33fb17038777818b69aaaae921e73b71386e93ba))
+
 ## [0.0.9](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.8...v0.0.9) (2022-07-22)
 
 
