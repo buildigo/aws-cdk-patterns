@@ -13,6 +13,15 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
-      - run: npm publish --access public
+      - run: |
+          npm test
+          npm run build
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage/
+          fail_ci_if_error: true
+          verbose: true
