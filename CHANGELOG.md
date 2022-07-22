@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.0](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.11...v0.1.0) (2022-07-22)
+
+
+### Bug Fixes
+
+* remove duplicate identifier to monitored function id ([97acfaf](https://github.com/buildigo/aws-cdk-patterns/commit/97acfaf388f3820bec522571904ad9335a0e1bfd))
+
+
+### Miscellaneous Chores
+
+* add jest config to prettierignore ([6005ddd](https://github.com/buildigo/aws-cdk-patterns/commit/6005ddddaa69c7c2369b498921fb47112a6878aa))
+
 ## [0.0.11](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.10...v0.0.11) (2022-07-22)
 
 
