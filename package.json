@@ -1,6 +1,6 @@
 {
   "name": "@buildigo/aws-cdk-patterns",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Set of AWS CDK high level patterns and utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
