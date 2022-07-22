@@ -7,6 +7,7 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       # build and run tests to make sure commit on master is fine
       - run: |
           npm ci
