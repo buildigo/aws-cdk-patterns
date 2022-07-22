@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.3...v0.0.4) (2022-07-22)
+
+
+### Bug Fixes
+
+* fix typo ([ec3ab2a](https://github.com/buildigo/aws-cdk-patterns/commit/ec3ab2aa329891fa574fe28a8bb865496db3709b))
+
 ## [0.0.3](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.2...v0.0.3) (2022-07-22)
 
 
