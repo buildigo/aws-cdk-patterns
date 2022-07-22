@@ -13,4 +13,3 @@ jobs:
           package-name: release-please-action
           bump-minor-pre-major: true
           bump-patch-for-minor-pre-major: true
-          versioning: always-bump-patch
