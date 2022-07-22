@@ -14,15 +14,16 @@ jobs:
           package-name: release-please-action
           bump-minor-pre-major: true
           bump-patch-for-minor-pre-major: true
-      - uses: actions/checkout@v3
       # these if statements ensure that a publication only occurs when a new release is created
+      - uses: actions/checkout@v3
         if: ${{ steps.release.outputs.release_created }}
+      # setup .npmrc for publishing
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      # run tests to make sure release is good to go
         if: ${{ steps.release.outputs.release_created }}
+      # run tests to make sure release is good to go, then build and publish
       - name: Publish to NPM
         run: |
           npm ci
@@ -32,9 +33,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: ${{ steps.release.outputs.release_created }}
+      # keep codecov baseline up to date
       - uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./coverage/
           fail_ci_if_error: true
           verbose: true
+        if: ${{ steps.release.outputs.release_created }}
