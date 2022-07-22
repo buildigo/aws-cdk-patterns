@@ -16,7 +16,7 @@
     "lint-and-format": "concurrently \"npm:lint\" \"npm:check-format\"",
     "test": "is-ci-cli \"test:ci\" \"test:dev\"",
     "test:dev": "jest -c jest.config.js --watch",
-    "test:ci": "jest -c jest.config.js --coverage --reporters=jest-junit --forceExit --detectOpenHandles --runInBand",
+    "test:ci": "JEST_SILENT_REPORTER_DOTS=true jest -c jest.config.js --coverage --reporters=jest-silent-reporter --forceExit --detectOpenHandles --runInBand",
     "test:coverage": "jest -c jest.config.js --coverage",
     "prepublish": "npm run build",
     "build": "tsc"
@@ -42,7 +42,7 @@
     "eslint": "^8.20.0",
     "is-ci-cli": "^2.2.0",
     "jest": "^28.1.3",
-    "jest-junit": "^14.0.0",
+    "jest-silent-reporter": "^0.5.0",
     "jest-watch-select-projects": "^2.0.0",
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.7",
