@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.5...v0.0.6) (2022-07-22)
+
+
+### Bug Fixes
+
+* if statements in actions come after ([296ea97](https://github.com/buildigo/aws-cdk-patterns/commit/296ea979fdb8328a50d19ad1d1af15aed60c1ecf))
+
 ## [0.0.5](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.4...v0.0.5) (2022-07-22)
 
 
