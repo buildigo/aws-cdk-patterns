@@ -7,9 +7,36 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
+      # build and run tests to make sure commit on master is fine
+      - run: |
+          npm ci
+          npm test
+          npm run build
+      # publish code coverage from master baseline
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage/
+          fail_ci_if_error: true
+          verbose: true
+      # run release-please to create release PR
       - uses: google-github-actions/release-please-action@v3
         with:
           release-type: node
           package-name: release-please-action
-          bump-patch-for-minor-pre-major: true
+          # as long as we are not stable, don't do any major version bumps
           bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
+      # publish to NPM once the release is created
+      # these if statements ensure that a publication only occurs when
+      # a new release is created
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+        if: ${{ steps.release.outputs.release_created }}
+      - run: |
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
