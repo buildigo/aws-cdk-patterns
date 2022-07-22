@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.11](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.10...v0.0.11) (2022-07-22)
+
+
+### Bug Fixes
+
+* jest config using esmodules ([02ff62b](https://github.com/buildigo/aws-cdk-patterns/commit/02ff62b207b854790e22eec32aea21b67982922e))
+
 ## [0.0.10](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.9...v0.0.10) (2022-07-22)
 
 
