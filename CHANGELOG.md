@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.8...v0.0.9) (2022-07-22)
+
+
+### Bug Fixes
+
+* add missing id for release output ([763fe30](https://github.com/buildigo/aws-cdk-patterns/commit/763fe306b02985396d1392f4a9479d99a83032c5))
+
 ## [0.0.8](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.7...v0.0.8) (2022-07-22)
 
 
