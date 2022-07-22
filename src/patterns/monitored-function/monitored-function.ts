@@ -1,10 +1,10 @@
 import * as lambda from 'aws-cdk-lib/aws-lambda'
 import {Construct} from 'constructs'
-import {MonitoredLambdaBase, MonitoredLambdaProps} from './monitored-lambda.base'
+import {MonitoredFunctionBase, MonitoredFunctionProps} from './monitored-function.base'
 import * as iam from 'aws-cdk-lib/aws-iam'
 
-export class MonitoredLambda extends MonitoredLambdaBase<lambda.FunctionProps> {
-  constructor(scope: Construct, id: string, props: MonitoredLambdaProps & lambda.FunctionProps) {
+export class MonitoredFunction extends MonitoredFunctionBase<lambda.FunctionProps> {
+  constructor(scope: Construct, id: string, props: MonitoredFunctionProps & lambda.FunctionProps) {
     super(scope, id, props)
   }
 

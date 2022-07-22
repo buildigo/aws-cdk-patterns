@@ -1,4 +1,4 @@
-## MonitoredLambda & MonitoredDockerImageLambda
+## MonitoredFunction & MonitoredDockerImageFunction
 
 Construct that, when prop `bgo.deployMonitoringAndAlerting` is true will deploy monitoring around the lambda function, including:
 
