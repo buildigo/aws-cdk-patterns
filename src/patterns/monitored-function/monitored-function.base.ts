@@ -5,7 +5,7 @@ import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch'
 import {ErrorInLogAlarm} from '../error-in-log-alarm/error-in-log-alarm'
 import * as logs from 'aws-cdk-lib/aws-logs'
 
-export interface MonitoredLambdaProps {
+export interface MonitoredFunctionProps {
   // namespace to avoid conflicts with lambda props
   bgo: {
     deployMonitoringAndAlerting: boolean
@@ -16,16 +16,20 @@ export interface MonitoredLambdaProps {
   }
 }
 
-export abstract class MonitoredLambdaBase<FunctionProps extends lambda.FunctionOptions> extends Construct {
+export abstract class MonitoredFunctionBase<FunctionProps extends lambda.FunctionOptions> extends Construct {
   readonly function: lambda.Function
-  readonly props: MonitoredLambdaProps & FunctionProps
+  readonly props: MonitoredFunctionProps & FunctionProps
 
   public readonly alarms?: {
     failedInvocations: cloudwatch.Alarm
     logError: cloudwatch.Alarm
   }
 
-  protected constructor(scope: Construct, protected readonly id: string, props: MonitoredLambdaProps & FunctionProps) {
+  protected constructor(
+    scope: Construct,
+    protected readonly id: string,
+    props: MonitoredFunctionProps & FunctionProps,
+  ) {
     super(scope, id)
     this.props = this.applyDefaults(props)
     this.function = this.setupFunction(this.props)
@@ -39,7 +43,7 @@ export abstract class MonitoredLambdaBase<FunctionProps extends lambda.FunctionO
   /**
    * Apply buildigo lambda defaults
    */
-  private applyDefaults(props: MonitoredLambdaProps & FunctionProps): MonitoredLambdaProps & FunctionProps {
+  private applyDefaults(props: MonitoredFunctionProps & FunctionProps): MonitoredFunctionProps & FunctionProps {
     return {
       tracing: lambda.Tracing.ACTIVE,
       ...props,
