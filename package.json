@@ -2,6 +2,7 @@
   "name": "@buildigo/aws-cdk-patterns",
   "version": "0.0.9",
   "description": "Set of AWS CDK high level patterns and utilities",
+  "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -26,6 +27,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/buildigo/aws-cdk-patterns.git"
+  },
+  "engines": {
+    "node": ">=14.17.0"
   },
   "keywords": [],
   "author": "Mathieu Meylan <mathieu.meylan@buildigo.ch>",
