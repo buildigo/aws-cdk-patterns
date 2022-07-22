@@ -5,7 +5,7 @@
     "declaration": true,
     "outDir": "./lib",
     "strict": true,
-    "types": []
+    "skipLibCheck": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.test.ts"]
