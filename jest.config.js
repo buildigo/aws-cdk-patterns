@@ -1,8 +1,12 @@
-const path = require('path')
+import {join, dirname} from 'path'
+import {fileURLToPath} from 'url'
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+export default {
   displayName: 'aws-cdk-pattens',
-  roots: [path.join(__dirname, 'src')],
+  roots: [join(__dirname, 'src')],
   testMatch: ['<rootDir>/**/*.(test).ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
