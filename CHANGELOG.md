@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.6...v0.0.7) (2022-07-22)
+
+
+### Bug Fixes
+
+* use plural of "release" for if statements ([2297117](https://github.com/buildigo/aws-cdk-patterns/commit/22971173a2ff47e2c1a9706e0b87912c0bc806cc))
+
 ## [0.0.6](https://github.com/buildigo/aws-cdk-patterns/compare/v0.0.5...v0.0.6) (2022-07-22)
 
 
