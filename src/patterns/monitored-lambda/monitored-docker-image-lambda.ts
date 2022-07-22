@@ -8,6 +8,6 @@ export class MonitoredDockerImageLambda extends MonitoredLambdaBase<lambda.Docke
   }
 
   override setupFunction(props: lambda.DockerImageFunctionProps): lambda.Function {
-    return new lambda.DockerImageFunction(this, this.id.concat('Function'), props)
+    return new lambda.DockerImageFunction(this, 'Function', props)
   }
 }

@@ -9,7 +9,7 @@ export class MonitoredLambda extends MonitoredLambdaBase<lambda.FunctionProps> {
   }
 
   override setupFunction(props: lambda.FunctionProps): lambda.Function {
-    const fn = new lambda.Function(this, this.id.concat('Function'), this.applyDefault(props))
+    const fn = new lambda.Function(this, 'Function', this.applyDefault(props))
     fn.role?.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('CloudWatchLambdaInsightsExecutionRolePolicy'))
     return fn
   }
