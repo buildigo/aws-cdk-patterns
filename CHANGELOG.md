@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/buildigo/aws-cdk-patterns/compare/v0.1.2...v0.2.0) (2022-07-23)
+
+
+### Features
+
+* rename error in log alarm name to avoid conflicts with existing stacks ([cac4e85](https://github.com/buildigo/aws-cdk-patterns/commit/cac4e85b39c0c6f35a4de92a6f7c228515c8d97e))
+
 ## [0.1.2](https://github.com/buildigo/aws-cdk-patterns/compare/v0.1.0...v0.1.2) (2022-07-22)
 
 
