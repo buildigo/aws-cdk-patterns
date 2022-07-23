@@ -1,13 +1,13 @@
 import * as logs from 'aws-cdk-lib/aws-logs'
 
-const ALARM_NAME_SUFFIX = 'LogErrorsAlarm'
+const ALARM_NAME_SUFFIX = 'ErrorInLogAlarm'
 const ALARM_DESCRIPTION_PREFIX = 'Alarm for Errors in LogGroup: '
 
 export function isErrorLogAlarm(alarmName: string): boolean {
   return alarmName?.indexOf(ALARM_NAME_SUFFIX) > 0
 }
 
-export function errorLogFilternPattern(): logs.IFilterPattern {
+export function errorLogFilterPattern(): logs.IFilterPattern {
   return logs.FilterPattern.anyTerm(' error ', ' ERROR ', ' Error ')
 }
 

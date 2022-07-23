@@ -1,7 +1,7 @@
 import {Duration} from 'aws-cdk-lib'
 import * as logs from 'aws-cdk-lib/aws-logs'
 import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch'
-import {createErrorLogAlarmDescription, createErrorLogAlarmName, errorLogFilternPattern} from './alarm-utils'
+import {createErrorLogAlarmDescription, createErrorLogAlarmName, errorLogFilterPattern} from './alarm-utils'
 import {Construct} from 'constructs'
 
 export interface ErrorInLogAlarmProps {
@@ -26,21 +26,21 @@ export class ErrorInLogAlarm extends Construct {
     return {
       ...props,
       namespace: props.namespace ?? 'BGO/CustomMetrics',
-      errorFilterPattern: props.errorFilterPattern ?? errorLogFilternPattern(),
+      errorFilterPattern: props.errorFilterPattern ?? errorLogFilterPattern(),
     }
   }
   private createErrorLogAlarm(resourceName: string, logGroup: logs.ILogGroup): cloudwatch.Alarm {
     // create an error metric filter in the logs metric
     const errorMetricProps: logs.MetricFilterProps = {
       logGroup,
-      metricName: resourceName + 'LogErrorsMetric',
+      metricName: resourceName + 'ErrorInLogMetric',
       metricNamespace: this.props.namespace,
       filterPattern: this.props.errorFilterPattern,
     }
-    new logs.MetricFilter(this, `LogErrorsMetricFilter`, errorMetricProps)
+    new logs.MetricFilter(this, `ErrorInLogMetricFilter`, errorMetricProps)
 
     // create an alarm on top of the error in the logs metric
-    return new cloudwatch.Alarm(this, `LogErrorsAlarm`, {
+    return new cloudwatch.Alarm(this, `ErrorInLogAlarm`, {
       alarmName: createErrorLogAlarmName(resourceName),
       alarmDescription: createErrorLogAlarmDescription(logGroup.logGroupName),
       metric: new cloudwatch.Metric({

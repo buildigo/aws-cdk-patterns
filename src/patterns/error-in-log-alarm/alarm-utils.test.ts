@@ -1,20 +1,20 @@
 import {
   createErrorLogAlarmDescription,
   createErrorLogAlarmName,
-  errorLogFilternPattern,
+  errorLogFilterPattern,
   isErrorLogAlarm,
   parseLogGroupFromAlarmDescription,
 } from './alarm-utils'
 
 test('isErrorLogAlarm', () => {
-  expect(isErrorLogAlarm('BgoCustomerNotificationPersonalLogErrorsAlarm')).toBeTruthy()
+  expect(isErrorLogAlarm('BgoCustomerNotificationPersonalErrorInLogAlarm')).toBeTruthy()
   expect(
     isErrorLogAlarm('BgoBackendPersonal-BgoPayrexxEventWebhookPersonalFunctionInvokeErrors84E99267-VADPUCP023Y5'),
   ).toBeFalsy()
 })
 
 test('createErrorLogAlarmName', () => {
-  expect(createErrorLogAlarmName('NotificationLambda')).toEqual('NotificationLambdaLogErrorsAlarm')
+  expect(createErrorLogAlarmName('NotificationLambda')).toEqual('NotificationLambdaErrorInLogAlarm')
 })
 
 test('createErrorLogAlarmDescription', () => {
@@ -24,7 +24,7 @@ test('createErrorLogAlarmDescription', () => {
 })
 
 test('errorLogFilternPattern', () => {
-  expect(errorLogFilternPattern().logPatternString).toEqual('?" error " ?" ERROR " ?" Error "')
+  expect(errorLogFilterPattern().logPatternString).toEqual('?" error " ?" ERROR " ?" Error "')
 })
 
 test('parseLogGroupFromAlarmDescription', () => {
