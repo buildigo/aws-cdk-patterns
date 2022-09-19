@@ -52,6 +52,7 @@ export abstract class MonitoredFunctionBase<FunctionProps extends lambda.Functio
 
   private setupMonitoring() {
     const failedInvocations = new cloudwatch.Alarm(this, `FunctionInvokeErrors`, {
+      alarmName: `${this.id}FunctionInvokeErrors`,
       metric: this.function.metricErrors({period: Duration.minutes(1)}),
       threshold: 1,
       evaluationPeriods: 1,
