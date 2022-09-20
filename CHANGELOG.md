@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.0...v0.2.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* make monitored function alarm name readable ([21c8a59](https://github.com/buildigo/aws-cdk-patterns/commit/21c8a59a5bd15d31d8b3df1741477140f8c2dee2))
+
 ## [0.2.0](https://github.com/buildigo/aws-cdk-patterns/compare/v0.1.2...v0.2.0) (2022-07-23)
 
 
