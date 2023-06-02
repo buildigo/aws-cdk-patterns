@@ -23,9 +23,9 @@ export class MonitoredFunction extends MonitoredFunctionBase<lambda.FunctionProp
 
   private insightsLayerArn(): string {
     if (this.isArm64()) {
-      return 'arn:aws:lambda:eu-central-1:580247275435:layer:LambdaInsightsExtension-Arm64:1'
+      return 'arn:aws:lambda:eu-central-1:580247275435:layer:LambdaInsightsExtension-Arm64:2'
     } else {
-      return 'arn:aws:lambda:eu-central-1:580247275435:layer:LambdaInsightsExtension:14'
+      return 'arn:aws:lambda:eu-central-1:580247275435:layer:LambdaInsightsExtension:35'
     }
   }
 
