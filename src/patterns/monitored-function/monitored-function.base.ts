@@ -46,6 +46,7 @@ export abstract class MonitoredFunctionBase<FunctionProps extends lambda.Functio
   private applyDefaults(props: MonitoredFunctionProps & FunctionProps): MonitoredFunctionProps & FunctionProps {
     return {
       tracing: lambda.Tracing.ACTIVE,
+      logRetention: logs.RetentionDays.THREE_MONTHS,
       ...props,
     }
   }
