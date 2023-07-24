@@ -38,25 +38,39 @@
     "test:ci": "JEST_SILENT_REPORTER_DOTS=true jest -c jest.config.js --coverage --reporters=jest-silent-reporter --forceExit --detectOpenHandles --runInBand",
     "test:coverage": "jest -c jest.config.js --coverage",
     "prepublish": "npm run build",
-    "build": "npm run build:cjs && npm run build:esm",
+    "build": "npm run build:cjs && npm run build:esm && npm run typecheck:functions && npm run bundle:functions",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
+    "typecheck:functions": "tsc -p tsconfig.functions.json --noEmit",
+    "bundle:functions": "node scripts/build-functions.js",
     "prepare": "husky install"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.0.0",
-    "constructs": "^10.0.0"
+    "aws-cdk-lib": "^2.88.0",
+    "constructs": "^10.2.0"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.374.0",
+    "@aws-sdk/util-stream-node": "^3.374.0",
     "@buildigo/eslint-config-typescript": "^1.12.5",
     "@buildigo/prettier-config": "^1.1.1",
+    "@emarketeer/esbuild-plugin-tsc": "^0.4.1",
+    "@hapi/accept": "^6.0.2",
+    "@types/aws-lambda": "^8.10.119",
     "@types/jest": "^28.1.6",
+    "@types/lodash": "^4.14.195",
+    "@types/sharp": "^0.31.1",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
-    "aws-cdk-lib": "^2.33.0",
+    "aws-cdk-lib": "^2.88.0",
+    "aws-lambda": "^1.0.7",
+    "aws-sdk-client-mock": "^3.0.0",
+    "aws-sdk-client-mock-jest": "^3.0.0",
     "concurrently": "^7.3.0",
-    "constructs": "^10.1.53",
+    "constructs": "^10.2.69",
+    "esbuild": "^0.18.16",
     "eslint": "^8.20.0",
+    "glob": "^8.1.0",
     "husky": "^8.0.1",
     "is-ci-cli": "^2.2.0",
     "jest": "^28.1.3",
@@ -64,7 +78,10 @@
     "jest-watch-select-projects": "^2.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
+    "rimraf": "^5.0.1",
+    "sharp": "^0.31.3",
     "ts-jest": "^28.0.7",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "yauzl-promise": "^4.0.0"
   }
 }

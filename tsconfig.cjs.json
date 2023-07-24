@@ -4,5 +4,6 @@
     "module": "commonjs",
     "outDir": "./lib/cjs",
     "declarationDir": "./lib/types"
-  }
+  },
+  "exclude": ["**/functions/**/*.ts"]
 }

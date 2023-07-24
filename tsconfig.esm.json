@@ -4,5 +4,6 @@
     "module": "ES2020",
     "outDir": "./lib/esm",
     "declarationDir": "./lib/types"
-  }
+  },
+  "exclude": ["**/functions/**/*.ts"]
 }

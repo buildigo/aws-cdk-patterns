@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  },
+  "extends": "./tsconfig.base.json",
+  "include": ["**/functions/**/*.ts"]
+}
