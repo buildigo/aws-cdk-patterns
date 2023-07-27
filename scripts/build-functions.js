@@ -11,7 +11,7 @@ clean()
   .then(() => allFunctions())
   .then(fns => debug('Compiling', fns))
   .then(fns => bundle({entryPoints: fns}))
-  .then(_ => console.debug('Compiling done!'))
+  .then(_ => debug('Compiling done!'))
   .then(() => console.debug('Copying files...'))
   .then(() => copyFiles())
   .then(() => console.debug('Copying done!'))
@@ -32,10 +32,6 @@ function clean() {
 function debug(message, printable) {
   console.log(message, printable)
   return Promise.resolve(printable)
-}
-
-function functions(fns) {
-  return Promise.resolve([...fns])
 }
 
 function allFunctions(args = {exclude: []}) {
