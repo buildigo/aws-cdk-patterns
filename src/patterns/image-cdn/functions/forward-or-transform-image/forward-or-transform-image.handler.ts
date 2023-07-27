@@ -64,7 +64,11 @@ export const processEvent = async (
       console.warn('Could not get object data', imageObj.Body)
       return response
     }
-    const resizedImage = await imageTransformer.transform(Buffer.from(data), {width, format, height})
+    const resizedImage = await imageTransformer.transform(
+      Buffer.from(data),
+      {width, format, height},
+      {withoutEnlargement: true},
+    )
 
     // TODO: set cache control on original image, and use it here
     const cacheControl = 'max-age=31536000,public,immutable'
