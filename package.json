@@ -3,7 +3,8 @@
   "version": "0.2.3",
   "description": "Set of AWS CDK high level patterns and utilities",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "dist/**/*"
   ],
   "types": "lib/types/index.d.ts",
   "exports": {
