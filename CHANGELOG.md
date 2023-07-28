@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.3](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.2...v0.2.3) (2023-07-28)
+
+
+### Features
+
+* don't enlarge image if smaller than requested size ([8b01b8c](https://github.com/buildigo/aws-cdk-patterns/commit/8b01b8cfcf82ac00966d50afeb4ff20a432533f5))
+* introduce construct to add an image API to a cloudfront CDN, allowing to modify images on the fly ([929ae29](https://github.com/buildigo/aws-cdk-patterns/commit/929ae29124c90ce030b24743e18d7f3d38958b3d))
+
+
+### Bug Fixes
+
+* fix error when collecting coverage ([58806a8](https://github.com/buildigo/aws-cdk-patterns/commit/58806a832e90286dd599eb8ff2fd38e80fc6c6bb))
+
 ## [0.2.2](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.1...v0.2.2) (2023-06-29)
 
 
