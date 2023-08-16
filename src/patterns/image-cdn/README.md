@@ -31,11 +31,11 @@ imageCdn.grantPermissions(bucket)
 
 // wire the image CDN to your cloudfront behavior serving images
 const imagesBehavior: cloudfront.AddBehaviorOptions = {
-    edgeLambdas: imageApi.edgeLambdas, // 4 / edge lambdas will take care to transform images if needed
-    cachePolicy: imageApi.cachePolicy, // 5 / a cache policy is created to cache transformed images and process correctly query parameters
+    edgeLambdas: imageCdn.edgeLambdas, // 4 / edge lambdas will take care to transform images if needed
+    cachePolicy: imageCdn.cachePolicy, // 5 / a cache policy is created to cache transformed images and process correctly query parameters
     allowedMethods: cloudfront.AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
 }
-distribution.addBehavior('/images/*', origin, imagesBehavior)
+distribution.addBehavior('/images/*', origin, imagesBehavior) // you can also set the default behavior
 
 // 6 / the us-east-1 region must be bootstrapped, because edge functions are always deployed to us-east-1 and then replicated to appropriate regions
 // npx cdk bootstrap aws://${AWS_ACCOUNT_ID}/us-east-1
