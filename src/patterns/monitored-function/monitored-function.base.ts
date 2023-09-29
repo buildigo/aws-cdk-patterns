@@ -13,6 +13,7 @@ export interface MonitoredFunctionProps {
       namespace?: string
       errorFilterPattern?: logs.IFilterPattern
     }
+    disableLowMemoryWarning?: boolean
   }
 }
 
@@ -36,6 +37,7 @@ export abstract class MonitoredFunctionBase<FunctionProps extends lambda.Functio
     if (props.bgo.deployMonitoringAndAlerting) {
       this.alarms = this.setupMonitoring()
     }
+    this.verifyConfiguration()
   }
 
   abstract setupFunction(props: FunctionProps): lambda.Function
@@ -67,5 +69,14 @@ export abstract class MonitoredFunctionBase<FunctionProps extends lambda.Functio
       resourceName: this.id,
     })
     return {failedInvocations, logError: logError.alarm}
+  }
+
+  private verifyConfiguration() {
+    const lowMemory = !this.props.memorySize || this.props.memorySize < 256
+    if (lowMemory && !!this.props.bgo?.disableLowMemoryWarning) {
+      console.warn(
+        `Function ${this.id} has memory size ${this.props.memorySize} which is less than 256MB. 128MB or less should only be used for the simplest lambda functions. See https://docs.aws.amazon.com/lambda/latest/operatorguide/computing-power.html for more info`,
+      )
+    }
   }
 }
