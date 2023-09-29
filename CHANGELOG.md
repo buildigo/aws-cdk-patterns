@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.5...v0.2.6) (2023-09-29)
+
+
+### Features
+
+* add warning when lambda is low in memory ([05ae7be](https://github.com/buildigo/aws-cdk-patterns/commit/05ae7be79cd1db91e3c8b30fe2700a17caafc90b))
+
 ## [0.2.5](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.4...v0.2.5) (2023-08-16)
 
 
