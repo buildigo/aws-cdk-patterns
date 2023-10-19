@@ -7,6 +7,15 @@ describe('UriToS3Key', () => {
     expect(response?.uri).toMatchInlineSnapshot(`"/ghosted.jpg"`)
     expect(response?.querystring).toMatchInlineSnapshot(`""`)
   })
+  it('should leave a request with unsupported extension untouched even when accept header supports avif/webp', async () => {
+    const response = await uriToS3Key(
+      mockEvent('/assets/images/some-icon.svg', '', 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'),
+      undefined as any,
+      undefined as any,
+    )
+    expect(response?.uri).toMatchInlineSnapshot(`"/assets/images/some-icon.svg"`)
+    expect(response?.querystring).toMatchInlineSnapshot(`""`)
+  })
   it('should process a single parameter', async () => {
     const response = await uriToS3Key(mockEvent('/ghosted.jpg', 'w=300'), undefined as any, undefined as any)
     expect(response?.uri).toMatchInlineSnapshot(`"/ghosted_300x.jpeg"`)

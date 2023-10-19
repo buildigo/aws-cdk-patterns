@@ -7,6 +7,7 @@ import {parseDimensionValue} from '../common/dimension'
 
 const BAD_JPG_EXTENSION = 'jpg'
 const GOOD_JPG_EXTENSION = 'jpeg'
+const SUPPORTED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp', 'avif']
 
 export const handler: Handler<CloudFrontRequestEvent, CloudFrontRequest> = event => {
   const {
@@ -41,6 +42,12 @@ export const handler: Handler<CloudFrontRequestEvent, CloudFrontRequest> = event
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, prefix, imageName, prevExtension] = uriComponents
+
+    // only transform supported extensions
+    if (!SUPPORTED_EXTENSIONS.includes(prevExtension.trim().toLowerCase())) {
+      console.debug(`Unsupported extension "${prevExtension}", skipping transform`)
+      return Promise.resolve(request)
+    }
 
     // new extension is the format parameter, if defined
     // fmt matches the target extensions (for now)
