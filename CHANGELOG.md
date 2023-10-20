@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.6...v0.2.7) (2023-10-20)
+
+
+### Bug Fixes
+
+* fix issue where svg would be transformed to aviff ([a5a835f](https://github.com/buildigo/aws-cdk-patterns/commit/a5a835f0384e9e980f45754682834248435c42fc))
+
 ## [0.2.6](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.5...v0.2.6) (2023-09-29)
 
 
