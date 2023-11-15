@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.7...v0.3.0) (2023-11-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* default is now json based logging and no longer text based logging
+
+### Features
+
+* error-in-log alarm defaults for json-based logging, pattern and alarm name/description can be customised ([d061a35](https://github.com/buildigo/aws-cdk-patterns/commit/d061a3539e61c1edaf43ea16dd6570f26057d878))
+
 ## [0.2.7](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.6...v0.2.7) (2023-10-20)
 
 
