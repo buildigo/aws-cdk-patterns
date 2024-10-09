@@ -33,15 +33,19 @@ export class ImageCdn extends Construct {
    * Cache policy to wire to your cloudfront behavior, optimised for images and allowing the necessary query parameters.
    */
   get cachePolicy() {
-    return new cloudfront.CachePolicy(this, 'ImageCDNCachePolicy', {
-      comment: 'Cache policy dedicated for the Image CDN ',
-      enableAcceptEncodingBrotli: true,
-      enableAcceptEncodingGzip: true,
-      headerBehavior: cloudfront.CacheHeaderBehavior.none(),
-      queryStringBehavior: cloudfront.CacheQueryStringBehavior.allowList(...Object.values(IMAGE_API_PARAMS)),
-      cookieBehavior: cloudfront.CacheCookieBehavior.none(),
-    })
+    if (!this._cachePolicy) {
+      this._cachePolicy = new cloudfront.CachePolicy(this, 'ImageCDNCachePolicy', {
+        comment: 'Cache policy dedicated for the Image CDN ',
+        enableAcceptEncodingBrotli: true,
+        enableAcceptEncodingGzip: true,
+        headerBehavior: cloudfront.CacheHeaderBehavior.none(),
+        queryStringBehavior: cloudfront.CacheQueryStringBehavior.allowList(...Object.values(IMAGE_API_PARAMS)),
+        cookieBehavior: cloudfront.CacheCookieBehavior.none(),
+      })
+    }
+    return this._cachePolicy
   }
+  private _cachePolicy: cloudfront.CachePolicy | undefined
 
   constructor(
     scope: Construct,
