@@ -48,7 +48,7 @@ Object {
     ],
   },
   "method": "GET",
-  "querystring": "fmt=png&h=500&w=300&sourceImage=/some/path/to/ghosted.jpg&ext=png",
+  "querystring": "w=300&h=500&fmt=png&sourceImage=%2Fsome%2Fpath%2Fto%2Fghosted.jpg&ext=png",
   "uri": "/some/path/to/ghosted_300x500.png",
 }
 `;

@@ -1,5 +1,5 @@
 import {CloudFrontRequest, CloudFrontRequestEvent, Handler} from 'aws-lambda'
-import {parse} from 'querystring'
+import {parse, stringify} from 'querystring'
 import {isNumber, isString} from 'lodash'
 import {IMAGE_API_PARAMS} from '../image-api.types'
 import {mediaType} from '@hapi/accept'
@@ -61,15 +61,15 @@ export const handler: Handler<CloudFrontRequestEvent, CloudFrontRequest> = event
     request.uri = `${prefix}/${imageName}_${w || ''}x${h || ''}.${newExtension}`
 
     // adapt query strings
-    request.querystring = [
-      fmt ? `${IMAGE_API_PARAMS.FORMAT}=${fmt}` : undefined,
-      h ? `${IMAGE_API_PARAMS.HEIGHT}=${h}` : undefined,
-      w ? `${IMAGE_API_PARAMS.WIDTH}=${w}` : undefined,
-      `${IMAGE_API_PARAMS.SRC_IMAGE}=${prefix}/${imageName}.${prevExtension}`,
-      `${IMAGE_API_PARAMS.EXTENSION}=${newExtension}`,
-    ]
-      .filter(q => !!q)
-      .join('&')
+    const updatedQueryParams = {
+      ...queryParams,
+      ...(fmt ? {[IMAGE_API_PARAMS.FORMAT]: fmt} : {}),
+      ...(h ? {[IMAGE_API_PARAMS.HEIGHT]: h.toFixed(0)} : {}),
+      ...(w ? {[IMAGE_API_PARAMS.WIDTH]: w.toFixed(0)} : {}),
+      [IMAGE_API_PARAMS.SRC_IMAGE]: `${prefix}/${imageName}.${prevExtension}`,
+      [IMAGE_API_PARAMS.EXTENSION]: newExtension,
+    }
+    request.querystring = stringify(updatedQueryParams)
 
     return Promise.resolve(request)
   } catch (err) {

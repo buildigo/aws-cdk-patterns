@@ -19,7 +19,7 @@ describe('UriToS3Key', () => {
   it('should process a single parameter', async () => {
     const response = await uriToS3Key(mockEvent('/ghosted.jpg', 'w=300'), undefined as any, undefined as any)
     expect(response?.uri).toMatchInlineSnapshot(`"/ghosted_300x.jpeg"`)
-    expect(response?.querystring).toMatchInlineSnapshot(`"w=300&sourceImage=/ghosted.jpg&ext=jpeg"`)
+    expect(response?.querystring).toMatchInlineSnapshot(`"w=300&sourceImage=%2Fghosted.jpg&ext=jpeg"`)
   })
   it('should process multiple parameters', async () => {
     const response = await uriToS3Key(
@@ -28,7 +28,18 @@ describe('UriToS3Key', () => {
       undefined as any,
     )
     expect(response?.uri).toMatchInlineSnapshot(`"/ghosted_300x500.png"`)
-    expect(response?.querystring).toMatchInlineSnapshot(`"fmt=png&h=500&w=300&sourceImage=/ghosted.jpg&ext=png"`)
+    expect(response?.querystring).toMatchInlineSnapshot(`"w=300&h=500&fmt=png&sourceImage=%2Fghosted.jpg&ext=png"`)
+  })
+  it('should process multiple parameters and leave existing parameters', async () => {
+    const response = await uriToS3Key(
+      mockEvent('/ghosted.jpg', 'w=300&h=500&fmt=png&existing=value1&existing=value2&signature=1234'),
+      undefined as any,
+      undefined as any,
+    )
+    expect(response?.uri).toMatchInlineSnapshot(`"/ghosted_300x500.png"`)
+    expect(response?.querystring).toMatchInlineSnapshot(
+      `"w=300&h=500&fmt=png&existing=value1&existing=value2&signature=1234&sourceImage=%2Fghosted.jpg&ext=png"`,
+    )
   })
   it('should process a uri with a prefix and parameters', async () => {
     const response = await uriToS3Key(
@@ -38,14 +49,14 @@ describe('UriToS3Key', () => {
     )
     expect(response?.uri).toMatchInlineSnapshot(`"/some/path/to/ghosted_300x500.png"`)
     expect(response?.querystring).toMatchInlineSnapshot(
-      `"fmt=png&h=500&w=300&sourceImage=/some/path/to/ghosted.jpg&ext=png"`,
+      `"w=300&h=500&fmt=png&sourceImage=%2Fsome%2Fpath%2Fto%2Fghosted.jpg&ext=png"`,
     )
     expect(response).toMatchSnapshot()
   })
   it('should normalize the jpg extension', async () => {
     const response = await uriToS3Key(mockEvent('/ghosted.jpg', 'w=300'), undefined as any, undefined as any)
     expect(response?.uri).toMatchInlineSnapshot(`"/ghosted_300x.jpeg"`)
-    expect(response?.querystring).toMatchInlineSnapshot(`"w=300&sourceImage=/ghosted.jpg&ext=jpeg"`)
+    expect(response?.querystring).toMatchInlineSnapshot(`"w=300&sourceImage=%2Fghosted.jpg&ext=jpeg"`)
   })
   it('should use the accept header to determine the image most appropriate format', async () => {
     // avif support
@@ -59,7 +70,7 @@ describe('UriToS3Key', () => {
       undefined as any,
     )
     expect(response?.uri).toMatchInlineSnapshot(`"/ghosted_300x.avif"`)
-    expect(response?.querystring).toMatchInlineSnapshot(`"fmt=avif&w=300&sourceImage=/ghosted.jpg&ext=avif"`)
+    expect(response?.querystring).toMatchInlineSnapshot(`"w=300&fmt=avif&sourceImage=%2Fghosted.jpg&ext=avif"`)
 
     // webp support
     const response2 = await uriToS3Key(
@@ -72,7 +83,7 @@ describe('UriToS3Key', () => {
       undefined as any,
     )
     expect(response2?.uri).toMatchInlineSnapshot(`"/ghosted_300x.webp"`)
-    expect(response2?.querystring).toMatchInlineSnapshot(`"fmt=webp&w=300&sourceImage=/ghosted.jpg&ext=webp"`)
+    expect(response2?.querystring).toMatchInlineSnapshot(`"w=300&fmt=webp&sourceImage=%2Fghosted.jpg&ext=webp"`)
   })
 })
 
