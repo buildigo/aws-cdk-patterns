@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/buildigo/aws-cdk-patterns/compare/v0.3.0...v0.3.1) (2024-10-09)
+
+
+### Bug Fixes
+
+* only generate one cache policy ([ec3e514](https://github.com/buildigo/aws-cdk-patterns/commit/ec3e514f5a02999a3492d38941dfb4183917f687))
+
 ## [0.3.0](https://github.com/buildigo/aws-cdk-patterns/compare/v0.2.7...v0.3.0) (2023-11-15)
 
 
