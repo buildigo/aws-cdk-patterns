@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/buildigo/aws-cdk-patterns/compare/v0.3.1...v0.3.2) (2024-10-09)
+
+
+### Bug Fixes
+
+* preserve existing query params ([c06a7a0](https://github.com/buildigo/aws-cdk-patterns/commit/c06a7a0e2d3322e9a5d6519683da084acad4623d))
+
 ## [0.3.1](https://github.com/buildigo/aws-cdk-patterns/compare/v0.3.0...v0.3.1) (2024-10-09)
 
 
