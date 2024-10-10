@@ -38,7 +38,7 @@ describe('UriToS3Key', () => {
     )
     expect(response?.uri).toMatchInlineSnapshot(`"/ghosted_300x500.png"`)
     expect(response?.querystring).toMatchInlineSnapshot(
-      `"w=300&h=500&fmt=png&existing=value1&existing=value2&signature=1234&sourceImage=%2Fghosted.jpg&ext=png"`,
+      `"existing=value1&existing=value2&signature=1234&w=300&h=500&fmt=png&sourceImage=%2Fghosted.jpg&ext=png"`,
     )
   })
   it('should process a uri with a prefix and parameters', async () => {
@@ -84,6 +84,23 @@ describe('UriToS3Key', () => {
     )
     expect(response2?.uri).toMatchInlineSnapshot(`"/ghosted_300x.webp"`)
     expect(response2?.querystring).toMatchInlineSnapshot(`"w=300&fmt=webp&sourceImage=%2Fghosted.jpg&ext=webp"`)
+  })
+  it('should ignore a format value not supported and autoFormat', async () => {
+    const r1 = await uriToS3Key(mockEvent('/ghosted.jpg', 'fmt=*&w=300'), undefined as any, undefined as any)
+    expect(r1?.uri).toMatchInlineSnapshot(`"/ghosted_300x.jpeg"`)
+    expect(r1?.querystring).toMatchInlineSnapshot(`"w=300&sourceImage=%2Fghosted.jpg&ext=jpeg"`)
+    // auto format
+    const r2 = await uriToS3Key(
+      mockEvent(
+        '/ghosted.jpg',
+        'fmt=*&w=300',
+        'image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+      ),
+      undefined as any,
+      undefined as any,
+    )
+    expect(r2?.uri).toMatchInlineSnapshot(`"/ghosted_300x.avif"`)
+    expect(r2?.querystring).toMatchInlineSnapshot(`"w=300&fmt=avif&sourceImage=%2Fghosted.jpg&ext=avif"`)
   })
 })
 

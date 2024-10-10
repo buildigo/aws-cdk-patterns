@@ -54,7 +54,7 @@ Example: Transform a PNG to WEBP and resize to 100px width.
 - **w**: set the new image width in pixels
 - **h**: set the new image height in pixels
 - **fmt**: set the new image format
-    - jpg
+    - jpeg
     - png
     - webp
     - avif

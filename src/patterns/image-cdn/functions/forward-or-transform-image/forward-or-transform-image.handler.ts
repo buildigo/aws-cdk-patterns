@@ -2,9 +2,10 @@ import {GetObjectCommand, PutObjectCommand, S3Client} from '@aws-sdk/client-s3'
 import {ImageTransformer} from './image-transformer.types'
 import {CloudFrontResponseEvent, CloudFrontResponseResult} from 'aws-lambda'
 import {parse} from 'querystring'
-import {Format, IMAGE_API_PARAMS} from '../image-api.types'
+import {IMAGE_API_PARAMS} from '../image-api.types'
 import {isString} from 'lodash'
 import {parseDimensionValue} from '../common/dimension'
+import {parseFormatValue} from '../common/format'
 
 export const processEvent = async (
   s3: S3Client,
@@ -47,7 +48,7 @@ export const processEvent = async (
   const sourceKey = sourceImage.replace(/^\//, '')
   const width = parseDimensionValue(w)
   const height = parseDimensionValue(h)
-  const format = parseFormat(fmt)
+  const format = parseFormatValue(fmt)
 
   if (!width && !height && !format) {
     return response
@@ -145,24 +146,6 @@ export function parseS3BucketName(domainName: string): string | undefined {
     return matches[0]
   } else {
     return undefined
-  }
-}
-
-function parseFormat(fmt?: unknown): Format | undefined {
-  if (!isString(fmt)) {
-    return undefined
-  }
-  switch (fmt) {
-    case 'jpeg':
-      return Format.JPG
-    case 'png':
-      return Format.PNG
-    case 'avif':
-      return Format.AVIF
-    case 'webp':
-      return Format.WEBP
-    default:
-      return undefined
   }
 }
 
