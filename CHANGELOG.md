@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/buildigo/aws-cdk-patterns/compare/v0.3.2...v0.3.3) (2024-10-10)
+
+
+### Bug Fixes
+
+* strong validation of fmt and don't carry over illegal values ([a3388bc](https://github.com/buildigo/aws-cdk-patterns/commit/a3388bc090dea14d2c474777f0aee1453bc5aecd))
+
 ## [0.3.2](https://github.com/buildigo/aws-cdk-patterns/compare/v0.3.1...v0.3.2) (2024-10-09)
 
 
