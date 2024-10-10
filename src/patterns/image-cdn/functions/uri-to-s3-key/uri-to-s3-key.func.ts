@@ -1,9 +1,10 @@
-import {CloudFrontRequest, CloudFrontRequestEvent, Handler} from 'aws-lambda'
+import {CloudFrontHeaders, CloudFrontRequest, CloudFrontRequestEvent, Handler} from 'aws-lambda'
 import {parse, stringify} from 'querystring'
-import {isNumber, isString} from 'lodash'
+import {isNumber, isString, omit} from 'lodash'
 import {IMAGE_API_PARAMS} from '../image-api.types'
 import {mediaType} from '@hapi/accept'
 import {parseDimensionValue} from '../common/dimension'
+import {parseFormatValue} from '../common/format'
 
 const BAD_JPG_EXTENSION = 'jpg'
 const GOOD_JPG_EXTENSION = 'jpeg'
@@ -20,12 +21,7 @@ export const handler: Handler<CloudFrontRequestEvent, CloudFrontRequest> = event
     const queryParams = parse(querystring)
     const h = parseDimensionValue(queryParams[IMAGE_API_PARAMS.HEIGHT])
     const w = parseDimensionValue(queryParams[IMAGE_API_PARAMS.WIDTH])
-    const fmt =
-      queryParams[IMAGE_API_PARAMS.FORMAT] ||
-      getSupportedMimeTypeExtension(
-        ['image/avif', 'image/webp'],
-        Array.isArray(headers.accept) && headers.accept.length ? headers.accept[0].value : '',
-      )
+    const fmt = parseFormatValue(queryParams[IMAGE_API_PARAMS.FORMAT]) || autoFormat(headers)
 
     if (!isNumber(h) && !isNumber(w) && !isString(fmt)) {
       // no parameter provided, skip any sort of transformation
@@ -62,10 +58,11 @@ export const handler: Handler<CloudFrontRequestEvent, CloudFrontRequest> = event
 
     // adapt query strings
     const updatedQueryParams = {
-      ...queryParams,
-      ...(fmt ? {[IMAGE_API_PARAMS.FORMAT]: fmt} : {}),
-      ...(h ? {[IMAGE_API_PARAMS.HEIGHT]: h.toFixed(0)} : {}),
+      // remove the format, height and width parameters as they're validated above and we don't want to carry over falsy values
+      ...omit(queryParams, [IMAGE_API_PARAMS.FORMAT, IMAGE_API_PARAMS.HEIGHT, IMAGE_API_PARAMS.WIDTH]),
       ...(w ? {[IMAGE_API_PARAMS.WIDTH]: w.toFixed(0)} : {}),
+      ...(h ? {[IMAGE_API_PARAMS.HEIGHT]: h.toFixed(0)} : {}),
+      ...(fmt ? {[IMAGE_API_PARAMS.FORMAT]: fmt} : {}),
       [IMAGE_API_PARAMS.SRC_IMAGE]: `${prefix}/${imageName}.${prevExtension}`,
       [IMAGE_API_PARAMS.EXTENSION]: newExtension,
     }
@@ -78,8 +75,10 @@ export const handler: Handler<CloudFrontRequestEvent, CloudFrontRequest> = event
   }
 }
 
-function getSupportedMimeTypeExtension(options: string[], accept = ''): string | undefined {
-  const mimeType = mediaType(accept, options)
+function autoFormat(headers: CloudFrontHeaders) {
+  const accept = Array.isArray(headers.accept) && headers.accept.length ? headers.accept[0].value : ''
+  const possibleOptimizedContentTypes = ['image/avif', 'image/webp']
+  const mimeType = mediaType(accept, possibleOptimizedContentTypes)
   if (accept.includes(mimeType)) {
     return mimeType.split('/')[1]
   } else {
