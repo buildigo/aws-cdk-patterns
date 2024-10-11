@@ -79,7 +79,7 @@ export const processEvent = async (
         Bucket: bucketName,
         ContentType: contentType,
         Key: key,
-        StorageClass: 'STANDARD',
+        StorageClass: 'STANDARD_IA',
         CacheControl: cacheControl,
       }),
     )
