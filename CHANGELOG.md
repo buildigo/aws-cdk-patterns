@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/buildigo/aws-cdk-patterns/compare/v0.3.3...v0.4.0) (2024-10-15)
+
+
+### Miscellaneous Chores
+
+* release 0.4.0 ([1f4a2bc](https://github.com/buildigo/aws-cdk-patterns/commit/1f4a2bc1e449c7d6b76fad549aa42f784ac7a7a6))
+
 ## [0.3.3](https://github.com/buildigo/aws-cdk-patterns/compare/v0.3.2...v0.3.3) (2024-10-10)
 
 
