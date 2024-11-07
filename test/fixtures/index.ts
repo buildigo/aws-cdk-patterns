@@ -7,4 +7,5 @@ function getPath(filename: string) {
 
 export const images = {
   inputJpeg: () => readFile(getPath('2569067123_aca715a2ee_o.jpg')),
+  portraitWithExif: () => readFile(getPath('portrait-with-exif.jpg')),
 }

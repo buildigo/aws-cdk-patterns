@@ -29,6 +29,16 @@ it('changes format to webp', async () => {
   expect(format).toBe('webp')
 })
 
+it('maintains the orientation when transforming an image with exif metadata', async () => {
+  const image = await images.portraitWithExif()
+  const before = await metadata(image)
+  expect(before.orientation).toBe(6)
+
+  const resized = await transformer.transform(await images.portraitWithExif(), {format: Format.WEBP})
+  const after = await metadata(resized)
+  expect(after.orientation).toBe(6)
+})
+
 function metadata(image: Buffer) {
   return Sharp(image).metadata()
 }
