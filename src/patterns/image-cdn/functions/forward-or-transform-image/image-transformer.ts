@@ -9,6 +9,9 @@ export class SharpImageTransformer implements ImageTransformer {
     opts?: {withoutEnlargement: boolean},
   ): Promise<Buffer> {
     let stream = Sharp(image)
+      // keep exif metadata to avoid orientation issues
+      .withMetadata()
+
     if (parameters.height || parameters.width) {
       stream = stream.resize({
         width: parameters.width,
