@@ -9,6 +9,9 @@ export class SharpImageTransformer implements ImageTransformer {
     opts?: {withoutEnlargement: boolean},
   ): Promise<Buffer> {
     let stream = Sharp(image)
+      // keep exif metadata to avoid orientation issues
+      .withMetadata()
+
     if (parameters.height || parameters.width) {
       stream = stream.resize({
         width: parameters.width,
@@ -22,13 +25,17 @@ export class SharpImageTransformer implements ImageTransformer {
           stream = stream.toFormat('jpeg')
           break
         case Format.PNG:
-          stream = stream.toFormat('png')
+          stream = stream
+            .rotate() // png EXIF supports seems limited in sharp - without this, portrait images from iOS will appear in landscape
+            .toFormat('png')
           break
         case Format.WEBP:
           stream = stream.toFormat('webp')
           break
         case Format.AVIF:
-          stream = stream.toFormat('avif', {effort: 2, chromaSubsampling: '4:2:0'})
+          stream = stream
+            .rotate() // avif does not support EXIF metadata, so rotate it first to make sure orientation is maintained - without this, portrait images from iOS will appear in landscape
+            .toFormat('avif', {effort: 2, chromaSubsampling: '4:2:0'})
           break
       }
     }
