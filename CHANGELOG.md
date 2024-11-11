@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/buildigo/aws-cdk-patterns/compare/v0.4.0...v0.4.1) (2024-11-11)
+
+
+### Bug Fixes
+
+* maintain EXIF orientation when resizing and reformatting image ([6230950](https://github.com/buildigo/aws-cdk-patterns/commit/6230950688508e3550b86785cf210e8b24cc52d8))
+* maintain EXIF orientation when resizing and reformatting images ([6230950](https://github.com/buildigo/aws-cdk-patterns/commit/6230950688508e3550b86785cf210e8b24cc52d8))
+
 ## [0.4.0](https://github.com/buildigo/aws-cdk-patterns/compare/v0.3.3...v0.4.0) (2024-10-15)
 
 
