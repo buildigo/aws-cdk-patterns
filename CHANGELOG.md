@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/buildigo/aws-cdk-patterns/compare/v0.4.2...v0.4.3) (2025-06-16)
+
+
+### Bug Fixes
+
+* upgrade jest ([8b8c63c](https://github.com/buildigo/aws-cdk-patterns/commit/8b8c63c7abe962504b51ed2f5776f11a9556ed8c))
+
 ## [0.4.2](https://github.com/buildigo/aws-cdk-patterns/compare/v0.4.1...v0.4.2) (2025-06-16)
 
 
