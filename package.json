@@ -8,10 +8,10 @@
   ],
   "types": "lib/types/index.d.ts",
   "exports": {
+    "types": "./lib/types/index.d.ts",
     "import": "./lib/esm/index.js",
     "require": "./lib/cjs/index.js",
-    "default": "./lib/esm/index.js",
-    "types": "./lib/types/index.d.ts"
+    "default": "./lib/esm/index.js"
   },
   "prettier": "@buildigo/prettier-config",
   "repository": {
@@ -48,30 +48,29 @@
     "prepare": "husky install"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.88.0",
+    "aws-cdk-lib": "^2.150.0",
     "constructs": "^10.2.0"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.374.0",
     "@aws-sdk/util-stream-node": "^3.374.0",
-    "@buildigo/eslint-config-typescript": "^1.12.5",
-    "@buildigo/prettier-config": "^1.1.1",
-    "@emarketeer/esbuild-plugin-tsc": "^0.4.1",
+    "@buildigo/eslint-config-typescript": "^2.0.0",
+    "@buildigo/prettier-config": "^2.0.1",
     "@hapi/accept": "^6.0.2",
     "@types/aws-lambda": "^8.10.126",
     "@types/jest": "^28.1.6",
     "@types/lodash": "^4.14.195",
     "@types/sharp": "^0.31.1",
-    "@typescript-eslint/eslint-plugin": "^5.30.7",
-    "@typescript-eslint/parser": "^5.30.7",
-    "aws-cdk-lib": "^2.88.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "aws-cdk-lib": "^2.201.0",
     "aws-sdk-client-mock": "^3.0.0",
     "aws-sdk-client-mock-jest": "^3.0.0",
     "concurrently": "^7.3.0",
-    "constructs": "^10.2.69",
-    "esbuild": "^0.18.16",
-    "eslint": "^8.20.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
+    "constructs": "^10.4.2",
+    "esbuild": "^0.25.5",
+    "eslint": "^8.57.1",
+    "eslint-import-resolver-typescript": "^4.4.3",
     "glob": "^8.1.0",
     "husky": "^8.0.1",
     "is-ci-cli": "^2.2.0",
@@ -83,7 +82,7 @@
     "rimraf": "^5.0.1",
     "sharp": "^0.31.3",
     "ts-jest": "^28.0.7",
-    "typescript": "^4.7.4",
+    "typescript": "^5.8.3",
     "yauzl-promise": "^4.0.0"
   }
 }

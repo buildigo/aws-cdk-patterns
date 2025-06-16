@@ -3,7 +3,6 @@ const esbuild = require('esbuild')
 const rimraf = require('rimraf')
 const glob = require('glob')
 const path = require('path')
-const esbuildPluginTsc = require('@emarketeer/esbuild-plugin-tsc')
 const yauzl = require('yauzl-promise')
 const {pipeline} = require('stream/promises')
 
@@ -58,7 +57,6 @@ function bundle(args = {entryPoints: []}) {
     external,
     outdir: 'dist/functions',
     entryNames: '[dir]/main',
-    plugins: [esbuildPluginTsc({tsconfigPath: tsconfig})],
   })
 }
 
