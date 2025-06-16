@@ -1,48 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ForwardOrTransformImage should resize the image when it does not exist (404), but the source image does exist 1`] = `
-Object {
+{
   "body": "dataimage/pngbase64iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJgg",
   "bodyEncoding": "base64",
-  "headers": Object {
-    "cache-control": Array [
-      Object {
+  "headers": {
+    "cache-control": [
+      {
         "key": "Cache-Control",
         "value": "max-age=31536000,public,immutable",
       },
     ],
-    "content-type": Array [
-      Object {
+    "content-type": [
+      {
         "key": "Content-Type",
         "value": "image/webp",
       },
     ],
-    "date": Array [
-      Object {
+    "date": [
+      {
         "key": "Date",
         "value": "Sat, 08 May 2021 23:33:25 GMT",
       },
     ],
-    "server": Array [
-      Object {
+    "server": [
+      {
         "key": "Server",
         "value": "AmazonS3",
       },
     ],
-    "transfer-encoding": Array [
-      Object {
+    "transfer-encoding": [
+      {
         "key": "Transfer-Encoding",
         "value": "chunked",
       },
     ],
-    "x-amz-id-2": Array [
-      Object {
+    "x-amz-id-2": [
+      {
         "key": "x-amz-id-2",
         "value": "QZlgZ/jWFGkc/pjNjijOkI1KjEH7avdgXL/2r5kuD7xMWFs6K3CSnHycKhzcVrN1chM0Hkq+IQM=",
       },
     ],
-    "x-amz-request-id": Array [
-      Object {
+    "x-amz-request-id": [
+      {
         "key": "x-amz-request-id",
         "value": "XPWJPWV1KP5CFDTS",
       },
@@ -54,48 +54,48 @@ Object {
 `;
 
 exports[`ForwardOrTransformImage should resize the image when it does not exist yet (403), but the source image does exist 1`] = `
-Object {
+{
   "body": "dataimage/pngbase64iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJgg",
   "bodyEncoding": "base64",
-  "headers": Object {
-    "cache-control": Array [
-      Object {
+  "headers": {
+    "cache-control": [
+      {
         "key": "Cache-Control",
         "value": "max-age=31536000,public,immutable",
       },
     ],
-    "content-type": Array [
-      Object {
+    "content-type": [
+      {
         "key": "Content-Type",
         "value": "image/webp",
       },
     ],
-    "date": Array [
-      Object {
+    "date": [
+      {
         "key": "Date",
         "value": "Sat, 08 May 2021 23:33:25 GMT",
       },
     ],
-    "server": Array [
-      Object {
+    "server": [
+      {
         "key": "Server",
         "value": "AmazonS3",
       },
     ],
-    "transfer-encoding": Array [
-      Object {
+    "transfer-encoding": [
+      {
         "key": "Transfer-Encoding",
         "value": "chunked",
       },
     ],
-    "x-amz-id-2": Array [
-      Object {
+    "x-amz-id-2": [
+      {
         "key": "x-amz-id-2",
         "value": "QZlgZ/jWFGkc/pjNjijOkI1KjEH7avdgXL/2r5kuD7xMWFs6K3CSnHycKhzcVrN1chM0Hkq+IQM=",
       },
     ],
-    "x-amz-request-id": Array [
-      Object {
+    "x-amz-request-id": [
+      {
         "key": "x-amz-request-id",
         "value": "XPWJPWV1KP5CFDTS",
       },
@@ -107,42 +107,42 @@ Object {
 `;
 
 exports[`ForwardOrTransformImage should return 404 when source image does not exist 1`] = `
-Object {
-  "body": "Error while getting source image object \\"bad-image.png\\": Error: Invalid object key",
+{
+  "body": "Error while getting source image object "bad-image.png": Error: Invalid object key",
   "bodyEncoding": "text",
-  "headers": Object {
-    "content-type": Array [
-      Object {
+  "headers": {
+    "content-type": [
+      {
         "key": "Content-Type",
         "value": "text/plain",
       },
     ],
-    "date": Array [
-      Object {
+    "date": [
+      {
         "key": "Date",
         "value": "Sat, 08 May 2021 23:38:02 GMT",
       },
     ],
-    "server": Array [
-      Object {
+    "server": [
+      {
         "key": "Server",
         "value": "AmazonS3",
       },
     ],
-    "transfer-encoding": Array [
-      Object {
+    "transfer-encoding": [
+      {
         "key": "Transfer-Encoding",
         "value": "chunked",
       },
     ],
-    "x-amz-id-2": Array [
-      Object {
+    "x-amz-id-2": [
+      {
         "key": "x-amz-id-2",
         "value": "4/PLziA+bP9cjFWVFErAyGd5NuOWY4E8XuE3DH0J913HugdpsWOCg+MsIAapBR8CXjT15VBywq8=",
       },
     ],
-    "x-amz-request-id": Array [
-      Object {
+    "x-amz-request-id": [
+      {
         "key": "x-amz-request-id",
         "value": "VWT4ZVZW6KVSZXK5",
       },
@@ -154,58 +154,58 @@ Object {
 `;
 
 exports[`ForwardOrTransformImage should return the resized image if it already exists 1`] = `
-Object {
-  "headers": Object {
-    "accept-ranges": Array [
-      Object {
+{
+  "headers": {
+    "accept-ranges": [
+      {
         "key": "Accept-Ranges",
         "value": "bytes",
       },
     ],
-    "content-length": Array [
-      Object {
+    "content-length": [
+      {
         "key": "Content-Length",
         "value": "2832",
       },
     ],
-    "content-type": Array [
-      Object {
+    "content-type": [
+      {
         "key": "Content-Type",
         "value": "image/webp",
       },
     ],
-    "date": Array [
-      Object {
+    "date": [
+      {
         "key": "Date",
         "value": "Sat, 08 May 2021 23:36:25 GMT",
       },
     ],
-    "etag": Array [
-      Object {
+    "etag": [
+      {
         "key": "ETag",
-        "value": "\\"72a9ff667c12b7d156a696877fc4df89\\"",
+        "value": ""72a9ff667c12b7d156a696877fc4df89"",
       },
     ],
-    "last-modified": Array [
-      Object {
+    "last-modified": [
+      {
         "key": "Last-Modified",
         "value": "Sat, 08 May 2021 23:33:28 GMT",
       },
     ],
-    "server": Array [
-      Object {
+    "server": [
+      {
         "key": "Server",
         "value": "AmazonS3",
       },
     ],
-    "x-amz-id-2": Array [
-      Object {
+    "x-amz-id-2": [
+      {
         "key": "x-amz-id-2",
         "value": "8q8ejgujau4YCUdFL3Ck1VPB6PsiEr/60RIZPUDxgOuzM/t/Dueg5SG1RdbKxnFKN7u+Yt8QkiI=",
       },
     ],
-    "x-amz-request-id": Array [
-      Object {
+    "x-amz-request-id": [
+      {
         "key": "x-amz-request-id",
         "value": "37THKNX0N2ADYKS3",
       },
@@ -217,66 +217,66 @@ Object {
 `;
 
 exports[`ForwardOrTransformImage should support events from a bucket with static website enabled (custom origin) 1`] = `
-Object {
+{
   "body": "dataimage/pngbase64iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJgg",
   "bodyEncoding": "base64",
-  "headers": Object {
-    "accept-ranges": Array [
-      Object {
+  "headers": {
+    "accept-ranges": [
+      {
         "key": "Accept-Ranges",
         "value": "bytes",
       },
     ],
-    "cache-control": Array [
-      Object {
+    "cache-control": [
+      {
         "key": "Cache-Control",
         "value": "max-age=31536000,public,immutable",
       },
     ],
-    "content-length": Array [
-      Object {
+    "content-length": [
+      {
         "key": "Content-Length",
         "value": "2832",
       },
     ],
-    "content-type": Array [
-      Object {
+    "content-type": [
+      {
         "key": "Content-Type",
         "value": "image/avif",
       },
     ],
-    "date": Array [
-      Object {
+    "date": [
+      {
         "key": "Date",
         "value": "Sat, 08 May 2021 23:36:25 GMT",
       },
     ],
-    "etag": Array [
-      Object {
+    "etag": [
+      {
         "key": "ETag",
-        "value": "\\"72a9ff667c12b7d156a696877fc4df89\\"",
+        "value": ""72a9ff667c12b7d156a696877fc4df89"",
       },
     ],
-    "last-modified": Array [
-      Object {
+    "last-modified": [
+      {
         "key": "Last-Modified",
         "value": "Sat, 08 May 2021 23:33:28 GMT",
       },
     ],
-    "server": Array [
-      Object {
+    "server": [
+      {
         "key": "Server",
         "value": "AmazonS3",
       },
     ],
-    "x-amz-id-2": Array [
-      Object {
+    "x-amz-id-2": [
+      {
         "key": "x-amz-id-2",
         "value": "8q8ejgujau4YCUdFL3Ck1VPB6PsiEr/60RIZPUDxgOuzM/t/Dueg5SG1RdbKxnFKN7u+Yt8QkiI=",
       },
     ],
-    "x-amz-request-id": Array [
-      Object {
+    "x-amz-request-id": [
+      {
         "key": "x-amz-request-id",
         "value": "37THKNX0N2ADYKS3",
       },

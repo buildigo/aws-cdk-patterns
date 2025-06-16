@@ -6,12 +6,9 @@ module.exports = {
     testMatch: ['<rootDir>/**/*.(test).ts'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     transform: {
-        '^.+\\.ts': 'ts-jest',
-    },
-    globals: {
-        'ts-jest': {
-            tsconfig: '<rootDir>/tsconfig.cjs.json',
-        },
+        '^.+\\.ts': ['ts-jest', {
+          tsconfig: '<rootDir>/tsconfig.cjs.json',
+        }],
     },
     watchPlugins: ['jest-watch-select-projects'],
     testEnvironment: 'node',

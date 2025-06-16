@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {handler as uriToS3Key} from './uri-to-s3-key.func'
 import {CloudFrontRequestEvent} from 'aws-lambda'
 
