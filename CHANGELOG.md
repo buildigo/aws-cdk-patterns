@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/buildigo/aws-cdk-patterns/compare/v0.4.1...v0.4.2) (2025-06-16)
+
+
+### Bug Fixes
+
+* exports type for typescript 5+ ([09064b2](https://github.com/buildigo/aws-cdk-patterns/commit/09064b256ada6f90b5dfaace78deeacbfb39b822))
+
 ## [0.4.1](https://github.com/buildigo/aws-cdk-patterns/compare/v0.4.0...v0.4.1) (2024-11-11)
 
 
